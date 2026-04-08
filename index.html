@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore The Hidden Beauty of Poonch. Discover the majestic mountains, lush valleys, and rich culture of Kashmir, curated by Ismail Awan.">
+    <meta name="keywords" content="Poonch, Kashmir, Tourism, Nature, Mountains, Ismail Awan, Travel">
+    <meta name="author" content="Ismail Awan">
+    <title>The Hidden Beauty of Poonch</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS Variables --- */
+        :root {
+            --primary-color: #2e7d32; /* Nature Green */
+            --primary-hover: #1b5e20;
+            --bg-color: #ffffff;
+            --bg-secondary: #f4f7f6;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --card-bg: #ffffff;
+            --border-color: #dddddd;
+            --transition: all 0.3s ease;
+        }
+
+        /* Dark Mode Theme */
+        body.dark-mode {
+            --primary-color: #4caf50;
+            --primary-hover: #81c784;
+            --bg-color: #121212;
+            --bg-secondary: #1e1e1e;
+            --text-main: #f1f1f1;
+            --text-muted: #bbbbbb;
+            --nav-bg: rgba(18, 18, 18, 0.95);
+            --card-bg: #242424;
+            --border-color: #333333;
+        }
+
+        /* --- Global Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .section {
+            padding: 80px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            border-radius: 30px;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
+        }
+
+        /* --- Animations --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Navbar --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: transparent;
+            transition: var(--transition);
+            padding: 20px 10%;
+        }
+
+        header.scrolled {
+            background: var(--nav-bg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 10%;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+        
+        header:not(.scrolled) .logo span {
+            color: #ffffff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        header:not(.scrolled) .nav-links li a {
+            color: #ffffff;
+        }
+        
+        header.scrolled .nav-links li a {
+            color: var(--text-main);
+        }
+
+        .nav-links li a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .dark-mode-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+        
+        header:not(.scrolled) .dark-mode-btn {
+            color: #ffffff;
+        }
+        
+        header.scrolled .dark-mode-btn {
+            color: var(--text-main);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-main);
+        }
+        
+        header:not(.scrolled) .hamburger {
+            color: #ffffff;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1595844730298-b960fad972b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease 0.3s;
+            animation-fill-mode: both;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Gallery Section --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h3 {
+            color: #ffffff;
+            font-size: 1.5rem;
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay h3 {
+            transform: translateY(0);
+        }
+
+        /* --- Blog Section --- */
+        .bg-secondary {
+            background-color: var(--bg-secondary);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .blog-img {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .blog-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .blog-card:hover .blog-img img {
+            transform: scale(1.05);
+        }
+
+        .blog-content {
+            padding: 25px;
+        }
+
+        .blog-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .blog-content p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+        }
+
+        .read-more:hover {
+            gap: 10px;
+        }
+
+        /* --- About Section --- */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            background: var(--card-bg);
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        
+        .owner-name {
+            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-top: 20px;
+            display: block;
+        }
+
+        /* --- Contact Section --- */
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            font-size: 1.1rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+            padding: 40px 10%;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #333;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        footer p {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* --- Floating WhatsApp --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #1ebe56;
+        }
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.8rem; }
+            .section { padding: 60px 5%; }
+            
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--nav-bg);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.4s ease;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li a {
+                color: var(--text-main) !important;
+                font-size: 1.2rem;
+            }
+            
+            .nav-close {
+                position: absolute;
+                top: 25px;
+                right: 30px;
+                font-size: 2rem;
+                cursor: pointer;
+                color: var(--text-main);
+                display: block;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .nav-close { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <nav>
+            <div class="logo">Poonch<span>Beauty</span></div>
+            <ul class="nav-links" id="navLinks">
+                <i class="fas fa-times nav-close" id="navClose"></i>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="dark-mode-btn" id="darkModeToggle" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <i class="fas fa-bars hamburger" id="hamburger"></i>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Explore the Hidden Beauty of Poonch</h1>
+            <p>Immerse yourself in the breathtaking landscapes, majestic mountains, and vibrant culture of Kashmir's best-kept secret.</p>
+            <a href="#gallery" class="btn">Discover More</a>
+        </div>
+    </section>
+
+    <section id="gallery" class="section">
+        <div class="reveal">
+            <h2 class="section-title">Stunning Landscapes</h2>
+            <p class="section-subtitle">A visual journey through the heart of nature</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1623594002621-3ce1a54b6d08?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="River in Valley" loading="lazy">
+                    <div class="gallery-overlay"><h3>Serene Rivers</h3></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1595844730298-b960fad972b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Snowy Mountains" loading="lazy">
+                    <div class="gallery-overlay"><h3>Majestic Peaks</h3></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1603525208470-3694fcc7cbcd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Green Valley" loading="lazy">
+                    <div class="gallery-overlay"><h3>Lush Valleys</h3></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1566837945700-3005dbea9dd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Forest Path" loading="lazy">
+                    <div class="gallery-overlay"><h3>Mystic Forests</h3></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1598091383021-14374b341f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mountain Village" loading="lazy">
+                    <div class="gallery-overlay"><h3>Local Heritage</h3></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1616616057037-33afc009d737?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Waterfall" loading="lazy">
+                    <div class="gallery-overlay"><h3>Hidden Waterfalls</h3></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog" class="section bg-secondary">
+        <div class="reveal">
+            <h2 class="section-title">Latest Stories</h2>
+            <p class="section-subtitle">Insights into travel, culture, and nature</p>
+
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1595844730298-b960fad972b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Travel Guide" loading="lazy">
+                    </div>
+                    <div class="blog-content">
+                        <h3>Top 5 Places to Visit in Poonch</h3>
+                        <p>Plan your ultimate getaway with our curated list of must-visit spots nestled deep within the majestic valleys.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1603525208470-3694fcc7cbcd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Culture" loading="lazy">
+                    </div>
+                    <div class="blog-content">
+                        <h3>The Rich Cultural Heritage</h3>
+                        <p>Dive into the vibrant traditions, local cuisine, and the poetic soul of the communities residing here.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1623594002621-3ce1a54b6d08?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Nature" loading="lazy">
+                    </div>
+                    <div class="blog-content">
+                        <h3>Trekking the Hidden Trails</h3>
+                        <p>Discover the untouched pathways that lead to awe-inspiring panoramic views and serene environments.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="reveal">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <p>Welcome to <strong>The Hidden Beauty of Poonch</strong>, a digital sanctuary dedicated to unveiling the pristine landscapes and untold stories of Kashmir's crown jewel. Our mission is to promote tourism, preserve cultural heritage, and share the mesmerizing beauty of our homeland with the world.</p>
+                <p>Through captivating visuals and insightful narratives, we invite you to explore the majestic peaks, flowing rivers, and the warmth of the local people.</p>
+                <span class="owner-name">Curated by Ismail Awan</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section bg-secondary">
+        <div class="reveal">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Plan your visit or collaborate with us</p>
+
+            <div class="contact-container">
+                <form action="https://formspree.io/f/xbjvzqzo" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="6" placeholder="How can we help you?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>&copy; <span id="year"></span> The Hidden Beauty of Poonch. All Rights Reserved.</p>
+    </footer>
+
+    <a href="https://wa.me/919999999999" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Set dynamic year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // --- Sticky Header on Scroll ---
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // --- Dark Mode Toggle ---
+        const darkModeBtn = document.getElementById('darkModeToggle');
+        const icon = darkModeBtn.querySelector('i');
+        
+        // Check local storage for preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            icon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        darkModeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                icon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                localStorage.setItem('theme', 'light');
+                icon.classList.replace('fa-sun', 'fa-moon');
+            }
+        });
+
+        // --- Mobile Menu Toggle ---
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const navClose = document.getElementById('navClose');
+        const navItems = document.querySelectorAll('.nav-links li a');
+
+        function openMenu() {
+            navLinks.classList.add('active');
+        }
+
+        function closeMenu() {
+            navLinks.classList.remove('active');
+        }
+
+        hamburger.addEventListener('click', openMenu);
+        navClose.addEventListener('click', closeMenu);
+
+        // Close menu when a link is clicked
+        navItems.forEach(item => {
+            item.addEventListener('click', closeMenu);
+        });
+
+        // --- Scroll Animations (Intersection Observer) ---
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, revealOptions);
+
+        revealElements.forEach(el => {
+            revealOnScroll.observe(el);
+        });
+    </script>
+</body>
+</html>
